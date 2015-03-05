@@ -4,8 +4,185 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width" />
   <title>เว็บหัวค_ย v.2</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <style>
+
+#btn1 { 
+display: block;
+line-height: 80px;
+text-align: center;
+font-family: "Courier New";
+font-size: 30px;
+border: 7px solid #00dd00;
+background-color: transparent;
+color: #00dd00;
+width: 35%;
+height: 80px;
+position: relative;
+left: 30%;
+//margin: 5% 5% 5% 10%;
+border-radius: 80px;
+z-index: 7;
+}
+
+body
+{
+text-align: center;
+background: black;
+color: #00ff00;
+font-family: "Courier New";
+}
+
+#studentnum
+{
+border: 2px solid #00ff00;
+background: #010101;
+font-family: "Courier New";
+color: #00ff00;
+text-align: center;
+border-radius: 10px;
+appearance: none;
+-moz-appearance: none;
+-webkit-appearance: none;
+}
+
+a
+{
+color: white;
+text-decoration: none;
+}
+  </style>
+  <script>
+var clickedTime = 0;
+
+function removeLink()
+{
+ document.getElementsByTagName("a")[1].style.display = "none";
+}
+
+function randomNumber()
+{
+ var stunum = document.getElementById("studentnum").value;
+ var randNum = Math.random();
+ var secNum = randNum * 100;
+ var finalNum = Math.round(secNum);
+ var resParag = document.getElementById('res');
+ var insElem = document.getElementById("ins");
+ if (finalNum <= 45)
+ {
+  if (finalNum != stunum)
+  {
+   insElem.style.visibility = "hidden";
+   resParag.innerHTML = "You have got number " + finalNum; 
+  }
+  else
+  {
+   insElem.style.visibility = "hidden";
+   resParag.innerHTML = "Congratulations! You have got number " + finalNum;
+  }
+ }
+ else
+ {
+  var divTwo = finalNum / 2;
+  var roundNum = Math.round(divTwo);
+  var finalNum = roundNum;
+  var resParag = document.getElementById("res");
+  if (finalNum > 45)
+  {
+   var finalNum = finalNum - 5;
+   if (finalNum != stunum)
+   {
+    insElem.style.visibility = "hidden";
+    resParag.innerHTML = "You have got number " + finalNum; 
+   }
+   else
+   {
+    insElem.style.visibility = "hidden";
+    resParag.innerHTML = "Congratulations! You have got number " + finalNum;
+   }
+  }
+  else
+  {
+   if (finalNum != stunum)
+   {
+    insElem.style.visibility = "hidden";
+    resParag.innerHTML = "You have got number " + finalNum; 
+   }
+   else
+   {
+    insElem.style.visibility = "hidden";
+    resParag.innerHTML = "Congratulations! You have got number " + finalNum;
+   }
+  }
+ }
+}
+
+function checkStunum()
+{
+ var stunum = document.getElementById('studentnum').value;
+ var someNum = Number(stunum);
+ if (isNaN(someNum))
+ {
+  alert("Oops! Something went wrong!");
+  document.getElementById('ins').innerHTML = "There is an error, please refresh page or contact <a href='https://www.facebook.com/anakin.thanainantha'>me</a>.";
+ }
+ else
+ {
+  stunumIsnum();
+ }
+}
+
+function stunumIsnum()
+{
+ var stunum = document.getElementById("studentnum").value;
+ if (stunum == 0)
+ {
+  document.getElementById('ins').innerHTML = "You must select student number!";
+  document.getElementById('ins').style.color = "red";
+ }
+ else if (stunum<0||stunum > 45)
+ {
+  document.getElementById('ins').innerHTML = "There is an error, please refresh page or contact <a href='https://www.facebook.com/anakin.thanainantha'>me</a>.";
+ }
+ else
+ {
+  randomNumber();
+ }
+}
+
+/* Say thanks to Nicael from Stackoverflow for providing pure javascript typewriter effect */
+
+var effectReady = 0;
+
+function typeEffect()
+{
+/*document.getElementById("ins").style.visibility="visible";
+document.getElementById("res").style.visibility="visible";*/
+var word = "Select your student number from the list.";
+var i = 0;
+var timer = setInterval(function(){
+    document.getElementById("ins").innerHTML+=word[i];
+    i++;
+    if(i>word.length-1)
+    {
+     clearInterval(timer);
+    }
+    effectReady++;
+   },75);
+typeEffect2();
+}
+
+function typeEffect2()
+{
+var word = "Then click the button below to start.";
+var i = 0;
+var timer = setInterval(function(){
+    document.getElementById("res").innerHTML+=word[i];i++;if(i>word.length-1){clearInterval(timer);}
+},83);
+}
+
+/* Say thanks to Nicael from Stackoverflow for providing pure javascript typewriter effect */
+ 
+ </script>
 </head>
 <body onload="removeLink(); typeEffect();">
 <h1>เว็บหัวค_ย v.2</h1>
