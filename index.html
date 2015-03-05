@@ -7,12 +7,12 @@ body
 background: #000000;
 color: #00ff00;
 font-family: "Courier New";
-font-size: 2em;
+font-size: 1.5em;
 }
 
 h1
 {
-font-size: 3.5em;
+font-size: 2.5em;
 }
   </style>
  </head>
@@ -23,6 +23,19 @@ font-size: 3.5em;
 
    Testing CSS...
      If CSS work fine, this page should be in lime on black.
+
+   Testing JavaScript...
+     If JavaScript work fine, this page's content should change to <em>“Hello, world!”</em> in 5 seconds.
   </pre></p>
+  <script>
+window.onload = windLoad();
+
+function windLoad()
+{
+ setTimeout(function(){
+  document.getElementsByTagName("body")[0].innerHTML = "Hello, world!";
+  }, 5000);
+}
+  </script>
  </body>
 </html>
